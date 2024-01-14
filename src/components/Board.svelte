@@ -15,19 +15,19 @@
 
 <div>
 	<div class="board-row">
-		<Square index=0/>
-		<Square index=1/>
-		<Square index=2/>
+		<Square index={indexBoard*9+0}/>
+		<Square index={indexBoard*9+1}/>
+		<Square index={indexBoard*9+2}/>
 	</div>
 	<div class="board-row">
-		<Square index=3/>
-		<Square index=4/>
-		<Square index=5/>
+		<Square index={indexBoard*9+3}/>
+		<Square index={indexBoard*9+4}/>
+		<Square index={indexBoard*9+5}/>
 	</div>
 	<div class="board-row">
-		<Square index=6/>
-		<Square index=7/>
-		<Square index=8/>
+		<Square index={indexBoard*9+6}/>
+		<Square index={indexBoard*9+7}/>
+		<Square index={indexBoard*9+8}/>
 	</div>
 </div>
 

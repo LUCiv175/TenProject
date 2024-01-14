@@ -1,5 +1,5 @@
 <script>
-	import Tile from './components/Tile.svelte';
+	import Game from './components/Game.svelte';
 	import { store, calculateWinner, win } from './script/stores.js';
 	let winner;
   	let status;
@@ -16,22 +16,25 @@
 </script>
 
 <style>
-	.game {
-		font: 14px "Century Gothic", Futura, sans-serif;
-		margin: 20px;
-		display: flex;
-		flex-direction: row;
-	}
-	.game-info {
-		margin-left: 20px;
-	}
-	
+.game {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+  display: flex;
+  flex-direction: column; /* Cambiato da "row" a "column" per impilare le righe verticalmente */
+}
+
+
+h1 {
+	color: black;
+}
+
 </style>
 
+<h1>ultimate tris</h1>
 <div class='game'>
-	<div class='game-board'>
-		<Tile/>
-	</div><!--
+	<Game/>
+  </div>
+	<!--
 	<div class='game-info'>
 		<div>{status}</div>
 	</div>
@@ -47,4 +50,3 @@
 		</li>
 		{/each}
 	</ol>-->
-</div>
