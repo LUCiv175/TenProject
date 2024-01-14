@@ -1,5 +1,6 @@
 <script>
 	import Square from './Square.svelte';
+	export let indexBoard;
     
 </script>
 

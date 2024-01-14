@@ -20,6 +20,7 @@
 		padding: 0;
 		text-align: center;
 		width: 34px;
+		color: black;
 	}
 
 	button:focus {

@@ -1,15 +1,19 @@
 import { writable } from 'svelte/store';
 
+
 const defaultBoard = {
 	history: [{
 		board: Array(9).fill('')
 	}],
 	xIsNext: true,
 	stepNumber: 0
-	
 }
+let number = 0
+
+export let win = writable(0)
 
 export function calculateWinner(squares) {
+	
 	const lines = [
 		[0, 1, 2],
 		[3, 4, 5],
@@ -26,11 +30,16 @@ export function calculateWinner(squares) {
 			return squares[a];
 		}
 	}
+	if(number==9){
+		store.reset()
+		number = 0;
+	}
 	return null;
 }
 
+
 function createStore() {
-	const { subscribe, set, update } = writable(defaultBoard);
+	const { subscribe, set, update} = writable(defaultBoard);
 
 	return {
 		subscribe,
@@ -38,9 +47,13 @@ function createStore() {
 			const history = store.history.slice(0, store.stepNumber + 1);
 			const current = history[store.stepNumber];
 
-			if (calculateWinner(current.board) || current.board[index]) {
+			if (calculateWinner(current.board)) {
 				return store;
 			}
+			else if(current.board[index]){
+				//return store;
+			}number++;
+			console.log(number)
 
 			let newBoard = current.board.slice();
 			newBoard[index] = store.xIsNext ? 'X' : 'O';
