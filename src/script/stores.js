@@ -1,18 +1,91 @@
 import { writable } from 'svelte/store';
 
-
-const defaultBoard = {
-	history: [{
-		board: Array(9).fill('')
-	}],
-	xIsNext: true,
-	stepNumber: 0
+const clearBoa = {
+		board: Array(9).fill(''),
+		stepNumber: 0,
+		whowon: null
 }
-let number = 0
+const clearGame = [{
+	board: Array(9).fill(''),
+	stepNumber: 0,
+	whowon: null
+},
+{
+	board: Array(9).fill(''),
+	stepNumber: 0,
+	whowon: null
+},
+{
+	board: Array(9).fill(''),
+	stepNumber: 0,
+	whowon: null
+},
+{
+	board: Array(9).fill(''),
+	stepNumber: 0,
+	whowon: null
+},
+{
+	board: Array(9).fill(''),
+	stepNumber: 0,
+	whowon: null
+},
+{
+	board: Array(9).fill(''),
+	stepNumber: 0,
+	whowon: null
+},
+{
+	board: Array(9).fill(''),
+	stepNumber: 0,
+	whowon: null
+},
+{
+	board: Array(9).fill(''),
+	stepNumber: 0,
+	whowon: null
+},
+{
+	board: Array(9).fill(''),
+	stepNumber: 0,
+	whowon: null
+}
+]
+export const game = createGame()
+let xisNext = true
+let next = -1
 
-export let win = writable(0)
 
-export function calculateWinner(squares) {
+function createGame() {
+	const { subscribe, set, update} = writable(clearGame);
+
+	return {
+		subscribe,
+		move: index => update(game => {
+			//console.log(game)
+			let newBoard = game[Math.floor(index/9)].board
+			if(newBoard[index%9]=="" && game[Math.floor(index/9)].whowon==null && (Math.floor(index/9)==next || next == -1)){
+				newBoard[index%9] = xisNext ? 'X' : 'O';
+				next = index%9
+				if(game[next].whowon!=null) next = -1
+				Object.assign({}, game[Math.floor(index/9)], {
+					board: newBoard,
+					stepNumber: game[Math.floor(index/9)].stepNumber,
+					whowon: game[Math.floor(index/9)].whowon
+				})
+				let n = game[Math.floor(index/9)].board.filter(space => space!='').length
+				xisNext = !xisNext
+				let result = calculateWinner(game[Math.floor(index/9)].board, game[Math.floor(index/9)].stepNumber)
+				if(result == null && n==9) game[Math.floor(index/9)] = clearBoa
+				game[Math.floor(index/9)].whowon=result}
+				return game
+		}),
+		reset: () => set(clearGame)
+	};
+}
+
+export function calculateWinner(squares, number) {
+	
 	
 	const lines = [
 		[0, 1, 2],
@@ -30,50 +103,6 @@ export function calculateWinner(squares) {
 			return squares[a];
 		}
 	}
-	if(number==9){
-		store.reset()
-		number = 0;
-	}
 	return null;
 }
 
-
-function createStore() {
-	const { subscribe, set, update} = writable(defaultBoard);
-
-	return {
-		subscribe,
-		move: index => update(store => {
-			const history = store.history.slice(0, store.stepNumber + 1);
-			const current = history[store.stepNumber];
-
-			if (calculateWinner(current.board)) {
-				return store;
-			}
-			else if(current.board[index]){
-				//return store;
-			}number++;
-			console.log(number)
-
-			let newBoard = current.board.slice();
-			newBoard[index] = store.xIsNext ? 'X' : 'O';
-
-			return Object.assign({}, store, {
-				history: history.concat([{
-					board: newBoard
-				}]),
-				xIsNext: !store.xIsNext,
-				stepNumber: history.length
-			})
-		}),
-		jumpTo: step => update(store => {
-			return Object.assign({}, store, {
-				xIsNext: (step % 2) === 0,
-				stepNumber: step
-			})
-		}),
-		reset: () => set(defaultBoard)
-	};
-}
-
-export const store = createStore();

@@ -1,10 +1,12 @@
 <script>
-	import { store } from '../script/stores.js';
+	import { game } from '../script/stores.js';
 
 	export let index;
 
-	$: current = $store.history[$store.stepNumber]
-	$: value = current.board[index];
+	//$: current = $store.history[$store.stepNumber]
+	//$: value = current.board[index];
+
+	$: value = $game[Math.floor(index/9)].board[index%9];
 </script>
 
 <style>
@@ -28,4 +30,4 @@
 	}
 </style>
 
-<button on:click={ () => store.move(index) }>{ value }</button> 
+<button on:click={ () => game.move(index) }>{ value }</button> 

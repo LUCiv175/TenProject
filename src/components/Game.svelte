@@ -29,6 +29,7 @@
         <div class='vertical-line'></div>
         <Tile indexTile=2/>
       </div>
+      
     
       <!-- Linea di separazione -->
       <div class='horizontal-line'></div>
