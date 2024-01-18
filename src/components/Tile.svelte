@@ -1,5 +1,7 @@
 <script>
     import Board from './Board.svelte';
+    import { game } from '../script/stores';
+    import Cell from './Cell.svelte';
     
     export let indexTile;
 
@@ -11,6 +13,9 @@
 </style>
 
 
-<div>
+<div>{#if ($game[indexTile].whowon=='')}
     <Board indexBoard={indexTile}/>
+    {:else}
+    <Cell symbol={$game[indexTile].whowon}/>
+    {/if}
 </div>
