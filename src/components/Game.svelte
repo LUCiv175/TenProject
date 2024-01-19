@@ -8,16 +8,7 @@
     margin-bottom: 10px;
   }
   
-  .vertical-line {
-    border-left: 2px solid black;
-    height: 100px;
-    margin: 0 10px; /* Ridotto il margine tra i quadranti per una migliore separazione */
-  }
   
-  .horizontal-line {
-    border-top: 2px solid black;
-    margin: 10px 0;
-  }
 </style>
 
 

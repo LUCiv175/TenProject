@@ -54,6 +54,7 @@ const clearGame = [{
 
 let xisNext = true
 let next = -1
+let end = 0;
 
 
 
@@ -65,10 +66,14 @@ function createGame() {
 		move: index => update(game => {
 			console.log(game)
 			let newBoard = game[Math.floor(index/9)].board
-			if(newBoard[index%9]=="" && game[Math.floor(index/9)].whowon=='' && (Math.floor(index/9)==next || next == -1)){
+			if(newBoard[index%9]=="" && game[Math.floor(index/9)].whowon=='' && (Math.floor(index/9)==next || next == -1) && end!=-1){
 				newBoard[index%9] = xisNext ? 'X' : 'O';
 				next = index%9
-				if(game[next].whowon!='') next = -1
+				store.change(next)
+				if(game[next].whowon!=''){
+					next = -1
+					store.change(next)
+				}
 				Object.assign({}, game[Math.floor(index/9)], {
 					board: newBoard,
 					stepNumber: game[Math.floor(index/9)].stepNumber,
@@ -129,9 +134,20 @@ export function calculateWinnerTotal(game) {
 	for (let i = 0; i < lines.length; i++) {
 		const [a, b, c] = lines[i];
 		if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+			end = -1;
 			return squares[a];
 		}
 	}
-	if(squares.filter(space => space!='').length == 9) return 'p';
+	if(squares.filter(space => space!='').length == 9){
+		end = -1
+		return 'p';
+	}
 	return null;
+}
+
+const {subscribe, update} = writable(-1)
+
+export const store = {
+	subscribe, 
+	change: (n) => update(s => n)
 }

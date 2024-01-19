@@ -3,7 +3,7 @@
     import { game} from "../script/stores";
     
     function resetGame() {
-        //game.reset()
+        location.replace(location.href)
     }
 </script>
 
