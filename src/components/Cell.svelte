@@ -6,7 +6,8 @@
 <style>
     h1{
         width: 96px;
-        color: black;
+        color: white;
+        font-family: 'Schoolbell', cursive;
     }
 </style>
 
