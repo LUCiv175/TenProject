@@ -70,10 +70,6 @@ function createGame() {
 				newBoard[index%9] = xisNext ? 'X' : 'O';
 				next = index%9
 				store.change(next)
-				if(game[next].whowon!=''){
-					next = -1
-					store.change(next)
-				}
 				Object.assign({}, game[Math.floor(index/9)], {
 					board: newBoard,
 					stepNumber: game[Math.floor(index/9)].stepNumber,
@@ -84,6 +80,10 @@ function createGame() {
 				let result = calculateWinner(game[Math.floor(index/9)].board)
 				if(result == null && n==9) game[Math.floor(index/9)] = clearBoa
 				if(result!=null){game[Math.floor(index/9)].whowon=result}
+				if(game[next].whowon!=''){
+					next = -1
+					store.change(next)
+				}
 				}
 				return game
 		}),
