@@ -1,9 +1,12 @@
 <script>
 	import Game from './components/Game.svelte';
   import Start from './components/Start.svelte';
-  import { calculateWinnerTotal, game} from './script/stores';
+  import { calculateWinnerTotal, game, viewRules} from './script/stores';
+  import RuleButton from './components/RuleButton.svelte';
+  import Rules from './components/Rules.svelte';
 
   $: w = calculateWinnerTotal($game);
+  $: view = !$viewRules
 
 </script>
 
@@ -31,7 +34,7 @@ h1 {
   }
 }
 h2{
-  color: #f8f416;
+  color: #FFAD05;
 }
 
 :global(.standard) {
@@ -65,7 +68,7 @@ h2{
 	}
 
   :global(body){
-    background-image: url('https://www.giuliaimmobiliareaffitti.com/wp-content/uploads/2016/09/sfondo-lavagna.jpg');
+    background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-size: cover;
   }
   :global(.vertical-line) {
@@ -78,7 +81,31 @@ h2{
     border-top: 5px solid white;
     margin: 10px 0;
   }
+
+  :global(.rules){
+    position: fixed;
+    background-color: #d4d2d5eb;
+    
+    left: 0; 
+    right: 0; 
+    margin-left: 20vw; 
+    margin-right: 20vw;
+    color: #360568;
+    padding-bottom: 5vh;
+    border-radius: 20px;
+    
+  }
+  :global(ul){
+    text-align: left;
+  }
+  :global(li){
+    color: #5F5449;
+    margin-right: 10px;
+  }
 </style>
+{#if view}
+  <Rules/>
+{/if}
 
 <h1>Ultimate Tris</h1>
 {#if w!='' && w!=null}
@@ -92,3 +119,5 @@ h2{
 <div class='game'>
 	<Game/>
   </div>
+<RuleButton/>
+

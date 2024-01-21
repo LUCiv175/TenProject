@@ -144,10 +144,24 @@ export function calculateWinnerTotal(game) {
 	}
 	return null;
 }
+function createStore() {
+	const {subscribe, update} = writable(-1)
 
-const {subscribe, update} = writable(-1)
-
-export const store = {
-	subscribe, 
-	change: (n) => update(s => n)
+	return {
+		subscribe, 
+		change: (n) => update(s => n)
+	}
 }
+export const store = createStore();
+
+function createCond() {
+	const {subscribe, update} = writable(true)
+
+	return {
+		subscribe, 
+		change: () => update(s => !s)
+	}
+}
+
+export const viewRules = createCond();
+export const rulesLang = createCond();
