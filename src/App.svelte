@@ -16,13 +16,11 @@
 }
 
 
-h1, h2 {
-	background-color: #fff;
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 0%, rgba(210,210,210,1) 100%);
+h1 {
+	color: rgba(250, 250, 239, 0.986);
 
 
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  
   font-family: 'Fasthand', cursive;
   font-family: 'Just Another Hand', cursive;
   animation: shine 1s linear infinite;
@@ -32,6 +30,10 @@ h1, h2 {
     }
   }
 }
+h2{
+  color: #f8f416;
+}
+
 :global(.standard) {
 		background: #fff;
 		border: 1px solid #999;
@@ -48,7 +50,7 @@ h1, h2 {
 	}
 
 	:global(.selected) {
-		background: yellow;
+		background: #c0c5c1;
 		border: 1px solid #999;
 		float: left;
 		font-size: 24px;

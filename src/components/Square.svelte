@@ -7,7 +7,7 @@
 	//$: value = current.board[index];
 	$: select = Math.floor(index/9)==$store 
 	$: value = $game[Math.floor(index/9)].board[index%9];
-	$: cl = select ? 'selected' : 'standard'
+	$: cl = !select && $store!=-1 ? 'selected' : 'standard'
 </script>
 
 <style>
