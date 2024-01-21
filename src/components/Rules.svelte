@@ -11,9 +11,9 @@
     "Turni: I giocatori si alternano.",
     "Simboli: Un giocatore usa 'X', l'altro 'O'.",
     "Inizio partita: Un giocatore inizia posizionando il proprio simbolo su una cella vuota.",
-    "Successione dei turni: I giocatori si alternano nella sotto-griglia, la casella del sotto tris che il giocatore deciderà di cliccare, corrisponderà, nella griglia principale, al quadrante dove il giocatore successivo effettuerà il turno",
+    "Successione dei turni: I giocatori si alternano nelle sottogriglie, la casella del sotto tris che il giocatore deciderà di cliccare, corrisponderà, nella griglia principale, al quadrante(quadrato illuminato) dove il giocatore successivo effettuerà il turno",
     "Proseguimento del gioco: Quando un giocatore effettua un tris nella sottogriglia vince la casella",
-    "Caso Speciale: Quando il giocatore precedente sceglie una casella che ha il quandrante di riferimento già conquistato, il giocatore a cui spetta il turno potrà scegliere di giocare in qualsisi quadrante libero",
+    "Caso Speciale: Quando il giocatore precedente sceglie una casella che ha il quandrante di riferimento già conquistato, il giocatore a cui spetta il turno potrà scegliere di giocare in qualsiasi quadrante libero",
     "Vincente: Il primo giocatore a formare una fila di tre simboli consecutivi nella griglia principale vince.",
     "Pareggio: Se tutte le celle della griglia principale sono occupate senza che nessun giocatore abbia ottenuto una fila di tre simboli, la partita termina in pareggio.",
     "Fine del gioco: La partita termina quando c'è un vincitore o un pareggio."
@@ -21,17 +21,17 @@
 
   const rulesEng = [
     "Players: 2 players",
-    "Objective: Achieve a row of three consecutive symbols (X or O) horizontally, vertically, or diagonally.",
-    "Board: 3x3 grid composed of 3x3 subgrids",
+    "Objective of the game: Achieve a row of three consecutive marks (X or O) horizontally, vertically, or diagonally.",
+    "Game board: 3x3 grid composed of 3x3 subgrids",
     "Turns: Players take turns.",
     "Symbols: One player uses 'X', the other 'O'.",
-    "Game Start: A player begins by placing their symbol in an empty cell.",
-    "Turn Sequence: Players take turns in the subgrid. The cell of the sub-grid that a player decides to click on will correspond, in the main grid, to the quadrant where the next player will make their move.",
-    "Game Progression: When a player forms a row of three in the subgrid, they win the cell.",
-    "Special Case: When the previous player chooses a cell that has already been won, the player whose turn it is can choose to play in any free quadrant.",
+    "Start of the game: A player begins by placing their symbol on an empty cell.",
+    "Sequence of turns: Players take turns in the subgrids; the cell in the subgrid that a player chooses corresponds, in the main grid, to the quadrant (illuminated square) where the next player will take their turn.",
+    "Continuation of the game: When a player forms a row of three symbols in a subgrid, they win that cell.",
+    "Special Case: When the previous player chooses a cell that has the reference quadrant already conquered, the player whose turn it is can choose to play in any free quadrant.",
     "Winner: The first player to form a row of three consecutive symbols in the main grid wins.",
-    "Draw: If all cells in the main grid are occupied without any player forming a row of three symbols, the game ends in a draw.",
-    "Game End: The game concludes when there is a winner or a draw."
+    "Draw: If all cells in the main grid are occupied without any player achieving a row of three symbols, the game ends in a draw.",
+    "End of the game: The game concludes when there is a winner or a draw."
   ];
   
 
@@ -53,24 +53,25 @@
 </script>
 
 <style>
-    .switch {
-  position: relative;
-  display: inline-block;
-  margin: 0 5px;
-}
+.switch {
+        position: relative;
+        display: inline-block;
+        margin: 0 5px;
+        text-align: center;
+    }
 
-.switch > span {
-  position: absolute;
-  top: 14px;
-  pointer-events: none;
-  font-family: 'Helvetica', Arial, sans-serif;
-  font-weight: bold;
-  font-size: 12px;
-  text-transform: uppercase;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, .06);
-  width: 50%;
-  text-align: center;
-}
+    .switch > span {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: 'Helvetica', Arial, sans-serif;
+        font-weight: bold;
+        font-size: 12px;
+        text-transform: uppercase;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, .06);
+        width: 50%;
+        cursor: pointer;
+    }
 
 input.check-toggle-round-flat:checked ~ .off {
   color: #360568;
@@ -168,11 +169,113 @@ button:hover{
     border: none;
     transform: scale(1.1);
     transition: 0.3s;
-
-    
 }
 
-
+  @media only screen and (max-width: 1300px) {
+		.rules{
+			margin-left: 5%;
+      margin-right: 5%;
+      top: 15%
+		}
+    /*
+    li{
+      font-size: small;
+    }
+    h1{
+      font-size:2.5rem;
+    }*/
+	}
+@media only screen and (max-width: 768px) {
+		.rules{
+			margin-left: 15px;
+      margin-right: 15px;
+      top: 15%;
+      height:100%;
+		}
+    /*
+    li{
+      font-size: small;
+    }
+    h1{
+      font-size:2.5rem;
+    }*/
+    button{
+      margin-top: 5px;
+    }
+	}
+  @media only screen and (max-width: 470px) {
+		.rules{
+			margin-left: 15px;
+      margin-right: 15px;
+      top: 15px;
+      position: absolute;
+    background-color: #d4d2d5eb;
+    left: 0; 
+    right: 0; 
+    color: #360568;
+    padding-bottom: 5vh;
+    border-radius: 20px;
+    max-height: 90vh;
+    overflow-x: auto;
+    height:100%;
+    min-width: 290px;
+    
+		}
+    
+    li{
+      font-size: small;
+    }
+    h1{
+      font-size:2.5rem;
+    }
+    button{
+      margin-top: 5px;
+    }
+	}
+  @media only screen and (max-width: 840px) {
+		.rules{
+			margin-left: 15px;
+      margin-right: 15px;
+      top: 15px;
+      position: absolute;
+    background-color: #d4d2d5eb;
+    left: 0; 
+    right: 0; 
+    color: #360568;
+    padding-bottom: 5vh;
+    border-radius: 20px;
+    max-height: 90vh;
+    overflow-x: auto;
+    height:100%;
+    min-width: 290px;
+    
+		}
+	}
+  @media only screen and (max-height: 840px) {
+		.rules{
+			margin-left: 15px;
+      margin-right: 15px;
+      top: 15px;
+      position: absolute;
+    background-color: #d4d2d5eb;
+    left: 0; 
+    right: 0; 
+    color: #360568;
+    padding-bottom: 5vh;
+    border-radius: 20px;
+    max-height: 90vh;
+    overflow-x: auto;
+    height:100%;
+    min-width: 290px;
+    
+		}
+	}
+  @media only screen and (max-width: 300px) {
+    .rules{
+      min-height: 650px;
+    }
+  }
+  
 
 </style>
 
@@ -180,10 +283,10 @@ button:hover{
     <h1>{title}</h1>
     <center>
         <div class="switch">
-            <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" on:click={changeLang}>
+            <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" checked={!$rulesLang}>
             <label for="language-toggle"></label>
-            <span class="on">IT</span>
-            <span class="off">EN</span>
+            <span class="on" on:click={changeLang}>IT</span>
+            <span class="off" on:click={changeLang}>EN</span>
           </div>
      </center>
     <ul>

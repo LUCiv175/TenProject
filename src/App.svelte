@@ -15,7 +15,17 @@
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
   display: flex;
-  flex-direction: column; /* Cambiato da "row" a "column" per impilare le righe verticalmente */
+  flex-direction: column;/* Cambiato da "row" a "column" per impilare le righe verticalmente */
+}
+
+@media only screen and (min-width: 443px) {
+  .game{
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    font: 14px "Century Gothic", Futura, sans-serif;
+    margin-top: 20px;
+  }
 }
 
 
@@ -69,11 +79,13 @@ h2{
 
   :global(body){
     background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-    background-size: cover;
+    background-size:cover;
+    background-attachment: fixed;
+    
   }
   :global(.vertical-line) {
     border-left: 5px solid white;
-    height: 100px;
+    height: 5rem;
     margin: 0 10px; /* Ridotto il margine tra i quadranti per una migliore separazione */
   }
   
@@ -83,9 +95,8 @@ h2{
   }
 
   :global(.rules){
-    position: fixed;
+    position: absolute;
     background-color: #d4d2d5eb;
-    
     left: 0; 
     right: 0; 
     margin-left: 20vw; 
@@ -93,7 +104,8 @@ h2{
     color: #360568;
     padding-bottom: 5vh;
     border-radius: 20px;
-    
+    max-height: 90vh;
+    overflow-x: auto;
   }
   :global(ul){
     text-align: left;
@@ -102,6 +114,18 @@ h2{
     color: #5F5449;
     margin-right: 10px;
   }
+  @media only screen and (max-height: 840px) {
+    h1{
+      line-height: 24px;
+    }
+  }
+  
+  @media only screen and (max-width: 300px) {
+    h1{
+      line-height:normal;
+    }
+  }
+  
 </style>
 {#if view}
   <Rules/>

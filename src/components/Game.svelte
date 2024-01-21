@@ -8,11 +8,12 @@
     margin-bottom: 10px;
   }
   
-  
+
 </style>
 
 
     <!-- Prima riga -->
+    <div>
 	<div class='game-row'>
         <Tile indexTile=0/>
         <div class='vertical-line'></div>
@@ -44,5 +45,6 @@
         <Tile indexTile=7/>
         <div class='vertical-line'></div>
         <Tile indexTile=8/>
-      </div>
+      </div></div>
+
 

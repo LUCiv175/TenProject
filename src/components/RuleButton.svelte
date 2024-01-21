@@ -19,6 +19,7 @@
         border: none;
         transform: scale(1.1);
         transition: 0.3s;
+        margin-top: 2vh;
 
     }
     .act{
@@ -26,14 +27,24 @@
         background-color: #5F5449;
         transition: 0.3s;
         border: none;
+        margin-top: 2vh;
     }
 
     .noHover{
     pointer-events: none;
+    color: #f4f2f3;
+        background-color: #5F5449;
+        border: none;
+        margin-top: 2vh;
     }
     
 
-    
+    @media only screen and (max-width: 322px) {
+		button{
+			margin-top: 12vh;
+            margin-bottom: 12vh;
+		}
+	}
 </style>
 
 <button class="{cl}" on:click={view}>How to Play</button>

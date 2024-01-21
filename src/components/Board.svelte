@@ -10,12 +10,15 @@
 		content: "";
 		display: table;
 	}
+	.tris{
+		align-items: center;
+	}
 
 	
 </style>
 
 
-<div>
+<div class="tris">
 	<div class="board-row">
 		<Square index={indexBoard*9+0}/>
 		<Square index={indexBoard*9+1}/>
