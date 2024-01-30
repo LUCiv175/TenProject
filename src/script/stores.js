@@ -78,8 +78,8 @@ function createGame() {
 				let n = game[Math.floor(index/9)].board.filter(space => space!='').length
 				xisNext = !xisNext
 				let result = calculateWinner(game[Math.floor(index/9)].board)
-				if(result == null && n==9) game[Math.floor(index/9)] = clearBoa
-				if(result!=null){game[Math.floor(index/9)].whowon=result}
+				if(result == '' && n==9) game[Math.floor(index/9)] = clearBoa
+				if(result!=''){game[Math.floor(index/9)].whowon=result}
 				if(game[next].whowon!=''){
 					next = -1
 					store.change(next)
